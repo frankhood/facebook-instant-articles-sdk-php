@@ -9,7 +9,7 @@
 namespace Facebook\InstantArticles\Transformer\Rules;
 
 use Facebook\InstantArticles\Transformer\Getters\AbstractGetter;
-use Symfony\Component\CssSelector\CssSelectorConverter;
+use Symfony\Component\CssSelector\CssSelector;
 use Facebook\InstantArticles\Transformer\Getters\GetterFactory;
 use Facebook\InstantArticles\Validators\Type;
 
@@ -117,7 +117,7 @@ abstract class ConfigurationSelectorRule extends Rule
         if (substr($this->selector, 0, 1) === '/') {
             $xpath = $this->selector;
         } else {
-            $converter = new CssSelectorConverter();
+            $converter = new CssSelector();
             $xpath = $converter->toXPath($this->selector);
         }
 
@@ -143,7 +143,7 @@ abstract class ConfigurationSelectorRule extends Rule
     public function findAll($node, $selector)
     {
         $domXPath = new \DOMXPath($node->ownerDocument);
-        $converter = new CssSelectorConverter();
+        $converter = new CssSelector();
         $xpath = $converter->toXPath($selector);
         return $domXPath->query($xpath, $node);
     }

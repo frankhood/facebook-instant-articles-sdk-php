@@ -10,7 +10,7 @@ namespace Facebook\InstantArticles\Transformer\Getters;
 
 use Facebook\InstantArticles\Validators\Type;
 use Facebook\InstantArticles\Transformer\Transformer;
-use Symfony\Component\CssSelector\CssSelectorConverter;
+use Symfony\Component\CssSelector\CssSelector;
 
 class ElementGetter extends AbstractGetter
 {
@@ -32,7 +32,7 @@ class ElementGetter extends AbstractGetter
     public function findAll($node, $selector)
     {
         $domXPath = new \DOMXPath($node->ownerDocument);
-        $converter = new CssSelectorConverter();
+        $converter = new CssSelector();
         $xpath = $converter->toXPath($selector);
         return $domXPath->query($xpath, $node);
     }

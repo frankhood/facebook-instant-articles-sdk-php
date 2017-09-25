@@ -10,7 +10,7 @@ namespace Facebook\InstantArticles\Transformer\Getters;
 
 use Facebook\InstantArticles\Validators\Type;
 use Facebook\InstantArticles\Transformer\Transformer;
-use Symfony\Component\CssSelector\CssSelectorConverter;
+use Symfony\Component\CssSelector\CssSelector;
 
 class FragmentGetter extends AbstractGetter
 {
